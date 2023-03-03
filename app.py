@@ -5,7 +5,7 @@ import markdown
 import markdown.extensions.fenced_code
 import markdown.extensions.codehilite
 
-openai.api_key = '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'
+openai.api_key = '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'
 app = Flask(__name__)
 messages = []
 @app.route('/')

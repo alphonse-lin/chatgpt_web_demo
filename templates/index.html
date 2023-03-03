@@ -56,18 +56,6 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script>
-        function GetUrl(input)　　 {
-            var protocol = window.location.protocol.toString();
-            // var host =  window.location.host.toString();
-            var host = document.domain.toString();
-            var port = window.location.port.toString();
-            var url = protocol + '//' + host + ":9999/" + input + "/";
-            return url;　　
-        }
-
-        const URL_gr = GetUrl('get_response')
-        const URL_rs = GetUrl('reset')
-
         $(function() {
             $('#user-form').submit(function(event) {
                 event.preventDefault();
@@ -75,7 +63,7 @@
                 $('#messages').append('<div class="message user-message">' + user_input + '</div>');
                 $.ajax({
                     type: 'POST',
-                    url: URL_gr,
+                    url: '/get_response',
                     data: {
                         user_input: user_input
                     },
@@ -94,7 +82,7 @@
             $('#reset-button').click(function() {
                 $.ajax({
                     type: 'GET',
-                    url: URL_rs,
+                    url: '/reset',
                     success: function(response) {
                         $('#messages').empty();
                     }
