@@ -6,7 +6,7 @@ import markdown
 import markdown.extensions.fenced_code
 import markdown.extensions.codehilite
 
-openai.api_key = ''
+openai.api_key = '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'
 app = Flask(__name__)
 CORS(app)
 messages = []
@@ -24,6 +24,7 @@ def get_bot_response():
         model="gpt-3.5-turbo",
         messages=messages
     )
+    print(completion)
     ai_response = completion.choices[0].message['content']
     # print(ai_response)
     messages.append({'role': 'assistant', 'content': ai_response})
