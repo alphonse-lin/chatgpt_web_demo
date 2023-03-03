@@ -19,12 +19,13 @@ def home():
 def get_bot_response():
     user_input = request.form['user_input']
     print(user_input)
+    print("start to send______________________")
     messages.append({'role': 'user', 'content': user_input})
     completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=messages
     )
-    print("send back by gpt_____",completion)
+    print("send back by gpt______________________",completion)
     ai_response = completion.choices[0].message['content']
     # print(ai_response)
     messages.append({'role': 'assistant', 'content': ai_response})
