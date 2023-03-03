@@ -1,12 +1,14 @@
 from flask import Flask, render_template, request
+from flask_cors import CORS
 from markupsafe import Markup
 import openai
 import markdown
 import markdown.extensions.fenced_code
 import markdown.extensions.codehilite
 
-openai.api_key = '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'
+openai.api_key = ''
 app = Flask(__name__)
+CORS(app)
 messages = []
 @app.route('/')
 def home():
@@ -16,7 +18,7 @@ def home():
 @app.route('/get_response', methods=['POST'])
 def get_bot_response():
     user_input = request.form['user_input']
-    # print(user_input)
+    print(user_input)
     messages.append({'role': 'user', 'content': user_input})
     completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
