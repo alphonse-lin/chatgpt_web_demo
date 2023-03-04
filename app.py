@@ -21,6 +21,7 @@ def get_bot_response():
     print(user_input)
     print("start to send______________________")
     messages.append({'role': 'user', 'content': user_input})
+    print(messages)
     completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=messages
